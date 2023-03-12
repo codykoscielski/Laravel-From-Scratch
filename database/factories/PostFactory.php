@@ -18,13 +18,26 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $excerptRaws = $this->faker->paragraphs(2);
+        $bodyRaws = $this->faker->paragraphs(6);
+        $excerptHtml = '';
+        $bodyHtml = '';
+
+        foreach ($excerptRaws as $excerpt) {
+            $excerptHtml .= "<p>{$excerpt}</p>";
+        }
+
+        foreach ($bodyRaws as $body) {
+            $bodyHtml .= "<p>{$body}</p>";
+        }
+
         return [
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
-            'title' => $this->faker->sentence,
+            'title' => $this->faker->sentence(4),
             'slug' => $this->faker->slug,
-            'excerpt' => $this->faker->sentence,
-            'body' => $this->faker->paragraph
+            'excerpt' => $excerptHtml,
+            'body' => $body,
         ];
     }
 }

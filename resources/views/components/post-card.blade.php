@@ -14,16 +14,16 @@
                 </div>
 
                 <div class="mt-4">
-                    <h1 class="text-3xl">
-                        {{$post->title}}
+                    <h1 class="text-3xl clamp one-line">
+                        <a href="/post/{{ $post->slug }}">
+                            {{ $post->title }}
+                        </a>
                     </h1>
-                    <span class="mt-2 block text-gray-400 text-xs">{{$post->created_at->diffForHumans()}}</time></span>
-                </div>
             </header>
 
             <div class="text-sm mt-4">
                 <p>
-                   {{$post->excerpt}}
+                   {!! $post->excerpt !!}
                 </p>
 
             </div>
